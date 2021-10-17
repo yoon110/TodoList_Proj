@@ -10,8 +10,11 @@ public class TodoItem {
     private String category;
     private String due_date;
     private int id;
-    
-    public TodoItem(String title, String desc, String category, String due_date) {
+    private String complete = " ";
+    private String importance;
+    private String place;
+
+	public TodoItem(String title, String desc, String category, String due_date, String check) {
 		super();
 		this.title = title;
 		this.desc = desc;
@@ -19,6 +22,59 @@ public class TodoItem {
         this.current_date= f.format(new Date());
 		this.category = category;
 		this.due_date = due_date;
+		this.complete = check;
+	}
+
+	public TodoItem(String title, String desc, String category, String due_date, String check, String importance,
+			String place) {
+		super();
+		this.title = title;
+		this.desc = desc;
+		this.category = category;
+		this.due_date = due_date;
+		this.complete = check;
+		this.importance = importance;
+		this.place = place;
+		SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
+        this.current_date= f.format(new Date());
+	}
+	
+	public TodoItem(String title, String desc, String category, String due_date, String importance,
+			String place) {
+		super();
+		this.title = title;
+		this.desc = desc;
+		this.category = category;
+		this.due_date = due_date;
+		this.importance = importance;
+		this.place = place;
+		this.complete= " ";
+		SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
+        this.current_date= f.format(new Date());
+	}
+
+	public String getImportance() {
+		return importance;
+	}
+
+	public void setImportance(String importance) {
+		this.importance = importance;
+	}
+
+	public String getPlace() {
+		return place;
+	}
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
+
+	public String getComplete() {
+		return complete;
+	}
+
+	public void setComplete(String complete) {
+		this.complete = complete;
 	}
 
 	public int getId() {
@@ -78,12 +134,13 @@ public class TodoItem {
     }
     
     public String toSaveString() {
-    	return category +"##"+ title + "##" + desc +"##"+ due_date +"##"+ current_date + "\n";
+    	return complete +"##"+ category +"##"+ title + "##" + importance +"##"+ desc +"##"+ place +"##"+ due_date +"##"+ current_date + "\n";
     }
     
     @Override
   	public String toString() {
-  		// TODO Auto-generated method stub
-  		return id + " [" +category+ "] / " +title + " / " + desc + " / " + due_date +" / "+ current_date;
+    	TodoList l = new TodoList();
+    	String cateName = l.cateNumtoName(category);
+  		return "["+complete+"] "+ id + " [" +cateName+ "] / " +title + " (" + importance  +") / " + desc + " / "+place+ " / " + due_date +" / "+ current_date;
   	}
 }

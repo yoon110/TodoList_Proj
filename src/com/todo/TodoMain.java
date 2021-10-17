@@ -75,6 +75,10 @@ public class TodoMain {
 				TodoUtil.findCateList(l,cate);
 				break;
 				
+			case "check":
+				TodoUtil.checkComplete(l);
+				break;
+				
 			case "help":
 				Menu.displaymenu();
 				break;

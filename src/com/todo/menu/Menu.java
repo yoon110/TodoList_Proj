@@ -16,6 +16,7 @@ public class Menu {
         System.out.println("ls_cate      - 카테고리 목록");
         System.out.println("find         - 제목, 내용 내 키워드 검색");
         System.out.println("find_cate    - 카테고리 내 키워드 검색");
+        System.out.println("check        - 일정 완료 체크");
         System.out.println("exit         - 종료");
     }
     
